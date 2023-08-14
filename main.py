@@ -5,14 +5,14 @@ import time
 import win32clipboard
 
 
-npcDic = {
+npc_patterns = {
     "clarrisa": "ABC",
     "hargan": "r-r-|-r-r|r-.-r",
     "yeena": "b-b-g|b-g-b|g-b-b|nne|rint"
 }
 
 def regexToClipBoard(text):
-    return npcDic.get(text, text)
+    return npc_patterns.get(text, text)
 
 def update_clipboard_win32(new_text):
     win32clipboard.OpenClipboard()
@@ -26,7 +26,7 @@ def ocr_loop():
         screenshot = ImageGrab.grab(bbox=(x1, y1, x2, y2))
         text = pytesseract.image_to_string(screenshot).lower().strip()
         
-        if text in npcDic:
+        if text in npc_patterns:
             updated_text = regexToClipBoard(text)
             update_clipboard_win32(updated_text)
         time.sleep(1)
