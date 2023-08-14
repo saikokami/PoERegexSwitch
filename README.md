@@ -1,4 +1,4 @@
-# PoERegexSwitch-Config
+# PoERegexSwitch
 
 PoERegexSwitch is a tool designed to enhance the item search experience for Path of Exile players by allowing them to configure custom regular expressions for in-game NPCs. These custom regex patterns can be tailored to your individual preferences and help you quickly identify specific items in the in-game shop.
 
