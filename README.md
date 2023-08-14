@@ -11,8 +11,8 @@ PoERegexSwitch is a tool designed to enhance the item search experience for Path
    
    ```python
    npc_patterns = {
-       "Clarissa": r"Pattern for Clarissa's items",
-       "Hargan": r"Pattern for Hargan's items"
+       "clarissa": r"Pattern for Clarissa's items",
+       "hargan": r"Pattern for Hargan's items"
        # Add more NPCs and patterns as needed
    }
    ```
