@@ -5,10 +5,11 @@ PoE-NPC-Regex-Config is a tool designed to enhance the item search experience fo
 
 ## How It Works
 
-1. Clone or download the repository to your local machine.
+1. **Clone or download the repository to your local machine.**
 
-2. Configure the custom regular expressions: Open the `npc_patterns.py` file and add your own regular expressions for each NPC in the `npc_patterns` dictionary. For example:
-
+2. **Configure the custom regular expressions:**
+   Open the `main.py` file and modify the `npc_patterns` dictionary. Add your own regular expressions for each NPC following this format:
+   
    ```python
    npc_patterns = {
        "Clarissa": r"Pattern for Clarissa's items",
@@ -17,9 +18,11 @@ PoE-NPC-Regex-Config is a tool designed to enhance the item search experience fo
    }
    ```
 
-3. Run the tool: Execute the main script, and it will monitor the in-game text using OCR (Optical Character Recognition) on the specified screen region for each NPC. If the recognized text matches any of the configured regular expressions, the corresponding action will be triggered.
+3. **Run the tool:**
+   Execute the `main.py` script using Python, and it will monitor the in-game text using OCR (Optical Character Recognition) on the specified screen region for each NPC. If the recognized text matches any of the configured regular expressions, the corresponding action will be triggered.
 
-4. Improved item searches: As you interact with NPCs in Path of Exile, the tool will automatically recognize their items based on your custom regex patterns. This streamlined process will help you find items more efficiently in the shop.
+4. **Improved item searches:**
+   As you interact with NPCs in Path of Exile, the tool will automatically recognize their items based on your custom regex patterns. This streamlined process will help you find items more efficiently in the shop.
 
 ## Requirements
 
@@ -30,16 +33,16 @@ PoE-NPC-Regex-Config is a tool designed to enhance the item search experience fo
 
 ## Getting Started
 
-1. Install the required Python packages:
+1. **Install the required Python packages:**
    ```
    pip install pytesseract pyperclip pywin32
    ```
 
-2. Clone or download this repository.
+2. **Clone or download this repository.**
 
-3. Configure your custom regular expressions in `npc_patterns.py`.
+3. **Configure your custom regular expressions in the `main.py` file.**
 
-4. Run the tool:
+4. **Run the tool:**
    ```
    python main.py
    ```
