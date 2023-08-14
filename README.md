@@ -1,4 +1,3 @@
-```markdown
 # PoE-NPC-Regex-Config
 
 PoE-NPC-Regex-Config is a tool designed to enhance the item search experience for Path of Exile players by allowing them to configure custom regular expressions for in-game NPCs. These custom regex patterns can be tailored to your individual preferences and help you quickly identify specific items in the in-game shop.
@@ -54,4 +53,3 @@ This tool is intended for personal use and experimentation. Be mindful that it r
 Feel free to contribute to this repository by sharing your custom regex patterns, improving the code, or suggesting enhancements.
 
 Happy item hunting in Path of Exile!
-```
