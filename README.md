@@ -11,8 +11,8 @@ PoERegexSwitch is a tool designed to enhance the item search experience for Path
    
    ```python
    npc_patterns = {
-       "clarissa": r"Pattern for Clarissa's items",
-       "hargan": r"Pattern for Hargan's items"
+       "hargan": "r-r-|-r-r|r-.-r",
+       "yeena": "b-b-g|b-g-b|g-b-b|nne|rint"
        # Add more NPCs and patterns as needed
    }
    ```
@@ -27,14 +27,14 @@ PoERegexSwitch is a tool designed to enhance the item search experience for Path
 
 - Python 3.x
 - pytesseract
-- pyperclip
-- win32clipboard (for Windows users)
+- pywin32
+- pillow
 
 ## Getting Started
 
 1. **Install the required Python packages:**
    ```
-   pip install pytesseract pyperclip pywin32
+   pip install pytesseract pywin32 pillow
    ```
 
 2. **Clone or download this repository.**
