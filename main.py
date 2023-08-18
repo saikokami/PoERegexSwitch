@@ -4,7 +4,11 @@ import pytesseract
 import time
 import win32clipboard
 
+# Define constants
+SCREEN_WIDTH = None  # Will be assigned later
+UPDATE_INTERVAL = 1 # Interval in seconds for the OCR loop
 
+# NPC regex patterns - TODO: Check if some are wrong or missing
 npc_patterns = {
     "nessa": "regexHere",  # Act 1
     "tarkleigh": "regexHere",  # Act 1
@@ -25,30 +29,39 @@ npc_patterns = {
     "weylam roth": "regexHere",  # Act 10
 }
 
-def regexToClipBoard(text):
+def regexToClipboard(text):
     return npc_patterns.get(text, text)
 
-def update_clipboard_win32(new_text):
+def updateClipboardWin32(new_text):
     win32clipboard.OpenClipboard()
     win32clipboard.EmptyClipboard()
     win32clipboard.SetClipboardText(new_text)
     win32clipboard.CloseClipboard()
 
-def ocr_loop():
+def performOCR():
+    # Define the coordinates for the OCR screenshot
+    x1, y1, x2, y2 = (SCREEN_WIDTH - 150) // 2, 0, (SCREEN_WIDTH + 150) // 2, 35
+    screenshot = ImageGrab.grab(bbox=(x1, y1, x2, y2))
+    text = pytesseract.image_to_string(screenshot).lower().strip()
+
+    if text in npc_patterns:
+        updated_text = regexToClipboard(text)
+        updateClipboardWin32(updated_text)
+
+def startOCRLoop():
     while True:
-        x1, y1, x2, y2 = (screen_width - 150) // 2, 0, (screen_width + 150) // 2, 35
-        screenshot = ImageGrab.grab(bbox=(x1, y1, x2, y2))
-        text = pytesseract.image_to_string(screenshot).lower().strip()
+        performOCR()
+        time.sleep(UPDATE_INTERVAL)  # Wait for 1 second before the next OCR
 
-        if text in npc_patterns:
-            updated_text = regexToClipBoard(text)
-            update_clipboard_win32(updated_text)
-        time.sleep(1)
+def main():
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+    root = tk.Tk()
+    root.overrideredirect(True)
+    global SCREEN_WIDTH
+    SCREEN_WIDTH = root.winfo_screenwidth()
 
-root = tk.Tk()
-root.overrideredirect(True)
-screen_width = root.winfo_screenwidth()
+    startOCRLoop()
 
-ocr_loop()
+if __name__ == "__main__":
+    main()
