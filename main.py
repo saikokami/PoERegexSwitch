@@ -40,6 +40,7 @@ def updateClipboardWin32(new_text):
 
 def performOCR():
     # Define the coordinates for the OCR screenshot
+    # Dunno if this works for resolutions != 1920x1080
     x1, y1, x2, y2 = (SCREEN_WIDTH - 150) // 2, 0, (SCREEN_WIDTH + 150) // 2, 35
     screenshot = ImageGrab.grab(bbox=(x1, y1, x2, y2))
     text = pytesseract.image_to_string(screenshot).lower().strip()
